@@ -17,7 +17,7 @@ const Navbar = ({ setScrollToContact }) => {
 
   return (
     <nav className="navbar">
-      <button className="navbar-brand" onClick={handleLogoClick}>FitLife</button>
+      <button className="navbar-brand" onClick={handleLogoClick}>FitLife 🏠︎</button>
       <ul className="navbar-menu">
         <li 
           className="services-menu"

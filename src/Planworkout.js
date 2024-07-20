@@ -1,4 +1,3 @@
-// src/Planworkout.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Planworkout.css';
@@ -41,13 +40,14 @@ const Planworkout = () => {
     };
 
     return (
-        <div className="plan">
+        <div className="plan-container">
             <h2>Personal Goals and Life Circumstances Form</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Name:</label>
+                    <label htmlFor="name">Name:</label>
                     <input
                         type="text"
+                        id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
@@ -55,9 +55,10 @@ const Planworkout = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Email:</label>
+                    <label htmlFor="email">Email:</label>
                     <input
                         type="email"
+                        id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
@@ -65,8 +66,9 @@ const Planworkout = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Workout Plan:</label>
+                    <label htmlFor="workoutPlan">Workout Plan:</label>
                     <select
+                        id="workoutPlan"
                         name="workoutPlan"
                         value={formData.workoutPlan}
                         onChange={handleChange}
@@ -79,8 +81,9 @@ const Planworkout = () => {
                     </select>
                 </div>
                 <div className="form-group">
-                    <label>Intensity Level:</label>
+                    <label htmlFor="intensityLevel">Intensity Level:</label>
                     <select
+                        id="intensityLevel"
                         name="intensityLevel"
                         value={formData.intensityLevel}
                         onChange={handleChange}
@@ -93,8 +96,9 @@ const Planworkout = () => {
                     </select>
                 </div>
                 <div className="form-group">
-                    <label>Duration:</label>
+                    <label htmlFor="duration">Duration:</label>
                     <select
+                        id="duration"
                         name="duration"
                         value={formData.duration}
                         onChange={handleChange}
@@ -107,8 +111,9 @@ const Planworkout = () => {
                     </select>
                 </div>
                 <div className="form-group">
-                    <label>Additional information:</label>
+                    <label htmlFor="lifeCircumstances">Additional information:</label>
                     <textarea
+                        id="lifeCircumstances"
                         name="lifeCircumstances"
                         value={formData.lifeCircumstances}
                         onChange={handleChange}

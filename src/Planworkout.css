@@ -1,11 +1,11 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f1f1f1;
     margin: 0;
     padding: 0;
 }
 
-.plan {
+.plan-container {
     max-width: 600px;
     margin: 40px auto;
     padding: 20px;
@@ -14,14 +14,14 @@ body {
     background-color: #fff;
 }
 
-.plan h2 {
+.plan-container h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
 }
 
-.plan form {
+.plan-container form {
     display: flex;
     flex-direction: column;
 }
@@ -38,6 +38,7 @@ body {
 }
 
 .form-group input,
+.form-group select,
 .form-group textarea {
     width: 100%;
     padding: 12px;
@@ -51,8 +52,8 @@ body {
     resize: vertical;
 }
 
-.plan button {
-    background-color: #4285f4;
+.plan-container button {
+    background-color: #007BFF;
     color: #fff;
     padding: 12px 20px;
     border: none;
@@ -62,14 +63,14 @@ body {
     margin-top: 20px;
 }
 
-.plan button:hover {
-    background-color: #357ae8;
+.plan-container button:hover {
+    background-color: #0056b3;
 }
 
-.plan button:active {
-    background-color: #3367d6;
+.plan-container button:active {
+    background-color: #004080;
 }
 
-.plan button:focus {
+.plan-container button:focus {
     outline: none;
 }

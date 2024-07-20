@@ -6,6 +6,7 @@
 
 .tracker-container h1, .tracker-container h2 {
   text-align: center;
+  color: #333;
 }
 
 #tracker-form {
@@ -20,25 +21,27 @@
 
 .form-group label {
   margin-top: 10px;
+  color: #555;
 }
 
 .form-group input, .form-group select {
   margin-top: 5px;
   padding: 8px;
   width: 100%;
+  color: #555;
 }
 
 .tracker-button {
   margin-top: 10px;
   padding: 10px;
-  background-color: #007BFF;
+  background-color: #666;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .tracker-button:hover {
-  background-color: #0056b3;
+  background-color: #555;
 }
 
 .logs {
@@ -51,6 +54,28 @@
   margin-bottom: 10px;
 }
 
+.log-item p {
+  color: #777;
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a;
+}
+
 .analysis {
   margin-top: 20px;
 }
+
+.analysis p {
+  color: #777;
+}
+

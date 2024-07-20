@@ -19,11 +19,21 @@ const Tracker = () => {
   }, [logs]);
 
   const addLog = () => {
+    if (!description || !date) {
+      alert('Please fill in both the description and date.');
+      return;
+    }
+
     const newLog = { type, description, date };
     setLogs([...logs, newLog]);
     setType('Workout');
     setDescription('');
     setDate('');
+  };
+
+  const deleteLog = (index) => {
+    const updatedLogs = logs.filter((_, i) => i !== index);
+    setLogs(updatedLogs);
   };
 
   const analyzeLogs = () => {
@@ -69,7 +79,14 @@ const Tracker = () => {
             onChange={e => setDate(e.target.value)}
           />
         </div>
-        <button type="button" onClick={addLog} className="tracker-button">Add Log</button>
+        <button
+          type="button"
+          onClick={addLog}
+          className="tracker-button"
+          disabled={!description || !date}
+        >
+          Add Log
+        </button>
       </form>
 
       <div className="logs">
@@ -79,6 +96,7 @@ const Tracker = () => {
             <p><strong>Type:</strong> {log.type}</p>
             <p><strong>Description:</strong> {log.description}</p>
             <p><strong>Date:</strong> {log.date}</p>
+            <button onClick={() => deleteLog(index)} className="delete-button">Delete</button>
           </div>
         ))}
       </div>

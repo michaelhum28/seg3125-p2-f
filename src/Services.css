@@ -2,26 +2,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
-  background-color: #f5f5f5;
+  padding: 60px 20px;
+  background-color: #f0f8ff; /* Change to a warmer, more welcoming color */
 }
 
 .services {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  gap: 20px;
+  gap: 40px;
   width: 100%;
+  flex-wrap: wrap;
+  max-width: 1200px;
 }
 
 .service {
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 12px; /* Slightly more rounded corners */
   padding: 30px 20px;
-  width: 45%;
+  width: 100%;
+  max-width: 400px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -36,8 +39,14 @@
   color: #333;
 }
 
+.service h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
 .service p {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 20px;
   color: #777;
 }
@@ -55,24 +64,24 @@
 }
 
 .service button {
-  background-color: #666;
+  background-color: #ff7f50; /* Warmer button color */
   color: #fff;
   padding: 12px 25px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px; /* More rounded button */
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .service button:hover {
-  background-color: #555;
+  background-color: #ff6347;
 }
 
 .quote-banner {
-  background-color: #111;
+  background-color: #ff4500; /* Warmer color for quote banner */
   color: #fff;
-  padding: 20px;
+  padding: 30px;
   text-align: center;
   margin-top: 50px;
   width: 100%;
@@ -81,26 +90,64 @@
 .quote-banner p {
   font-size: 24px;
   margin: 0;
+  font-style: italic; /* Italicize quote text */
 }
 
 .track-progress {
-  margin-top: 20px;
+  margin-top: 40px;
   text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.track-progress button {
-  background-color: #666;
+.track-progress-card {
+  background: url('https://example.com/your-background-image.jpg') no-repeat center center;
+  background-size: cover;
+  color: #333; /* Match color with service card text */
+  padding: 40px 20px;
+  border-radius: 12px; /* More rounded corners */
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.track-progress-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.track-progress-card h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333; /* Match color with service card h2 */
+}
+
+.track-progress-card h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #666; /* Match color with service card text */
+}
+
+.track-progress-card p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #777; /* Match color with service card text */
+}
+
+.track-progress-button {
+  background-color: #ff7f50; /* Warmer button color */
   color: #fff;
-  padding: 16px 48px; /* Increase padding for a bigger button */
+  padding: 16px 32px;
   border: none;
-  border-radius: 4px;
-  font-size: 28px; /* Adjust font size to match */
+  border-radius: 8px;
+  font-size: 18px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top:20px
 }
 
-.track-progress button:hover {
-  background-color: #555;
+.track-progress-button:hover {
+  background-color: #ff6347;
 }
-

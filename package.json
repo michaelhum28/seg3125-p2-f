@@ -1,7 +1,7 @@
 {
-  "name": "seg3125-p2",
+  "name": "seg3125-p2-f",
   "version": "0.1.0",
-  "homepage": "https://michaelhum28.github.io/seg3125-p2/",
+  "homepage": "https://michaelhum28.github.io/seg3125-p2-f/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

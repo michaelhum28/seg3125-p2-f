@@ -6,9 +6,6 @@ import './LandingPage.css';
 import coach1 from './images/coach1.PNG';
 import coach2 from './images/coach2.PNG';
 import coach3 from './images/coach3.PNG';
-// Import new images for the hero section
-import heroImage1 from './images/gym1.jpg';
-import heroImage2 from './images/gym2.jpg';
 
 const LandingPage = ({ scrollToContact }) => {
   useEffect(() => {
@@ -20,10 +17,6 @@ const LandingPage = ({ scrollToContact }) => {
   return (
     <div className="landing-page">
       <section className="hero-section">
-        <div className="hero-images">
-          <img src={heroImage1} alt="Hero Left" className="hero-image" />
-          <img src={heroImage2} alt="Hero Right" className="hero-image" />
-        </div>
         <h1>Your Fitness Journey Starts Here</h1>
         <p>
           Achieve your health and fitness goals with personalized plans, <br />
@@ -70,6 +63,24 @@ const LandingPage = ({ scrollToContact }) => {
               Yoga and pilates instructor, specializing in flexibility and mindfulness techniques.
             </div>
             <div className="expert-specialization">Specialization: Yoga</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div className="faq-container">
+          <div className="faq-item">
+            <h3>What services do you offer?</h3>
+            <p>We offer a variety of services including personal training, group classes, and nutrition plans.</p>
+          </div>
+          <div className="faq-item">
+            <h3>What are your operating hours?</h3>
+            <p>We are open 24 hours a day, 7 days a week.</p>
+          </div>
+          <div className="faq-item">
+            <h3>How can I contact you?</h3>
+            <p>You can contact us via phone at (613) 562-5700 or through our online contact form.</p>
           </div>
         </div>
       </section>

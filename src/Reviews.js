@@ -4,18 +4,22 @@ import './Reviews.css';
 const Reviews = () => {
   const initialReviews = [
     {
+      id: 1,
       name: 'John Doe',
       plan: 'Workout',
       rating: 5,
       email: 'john@example.com',
-      review: 'This plan is amazing! Highly recommend it to everyone.'
+      review: 'This plan is amazing! Highly recommend it to everyone.',
+      isNew: false,
     },
     {
+      id: 2,
       name: 'Jane Smith',
       plan: 'Nutrition',
       rating: 4,
       email: 'jane@example.com',
-      review: 'Good value for the price. Satisfied with the service.'
+      review: 'Good value for the price. Satisfied with the service.',
+      isNew: false,
     },
   ];
 
@@ -25,17 +29,25 @@ const Reviews = () => {
   const [rating, setRating] = useState('');
   const [email, setEmail] = useState('');
   const [review, setReview] = useState('');
+  const [error, setError] = useState('');
 
   const addReview = () => {
+    if (!rating || !review || !email) {
+      setError('Please fill in all required fields');
+      return;
+    }
+
     const newReview = {
+      id: Date.now(), // Unique ID based on timestamp
       name,
       plan,
       rating: parseInt(rating),
       email,
       review,
+      isNew: true, // Mark the review as new
     };
 
-    setReviews([...reviews, newReview]);
+    setReviews([newReview, ...reviews]);
 
     // Clear the form fields
     setName('Anonymous');
@@ -43,6 +55,11 @@ const Reviews = () => {
     setRating('');
     setEmail('');
     setReview('');
+    setError('');
+  };
+
+  const deleteNewReview = (id) => {
+    setReviews(reviews.filter(review => review.id !== id || !review.isNew));
   };
 
   return (
@@ -50,8 +67,8 @@ const Reviews = () => {
       <h1>Reviews</h1>
       <p>Check out our latest reviews</p>
       <div id="reviews-list">
-        {reviews.map((review, index) => (
-          <div key={index} className="review-item">
+        {reviews.map(review => (
+          <div key={review.id} className="review-item">
             <div className="review-details">
               <p><strong>Name: </strong>{review.name}</p>
               <p><strong>Plan: </strong>{review.plan}</p>
@@ -60,12 +77,16 @@ const Reviews = () => {
             <div className="review-text">
               <p>{review.review}</p>
             </div>
+            {review.isNew && (
+              <button className="delete-button" onClick={() => deleteNewReview(review.id)}>Delete</button>
+            )}
           </div>
         ))}
       </div>
 
       <div className="review-form-container">
         <h2>Leave us a review!</h2>
+        {error && <p className="error">{error}</p>}
         <form id="review-form">
           <div className="form-group">
             <label htmlFor="name">Name:</label>

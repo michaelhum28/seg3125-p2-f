@@ -6,6 +6,7 @@ const Tracker = () => {
   const [type, setType] = useState('Workout');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
+  const [weight, setWeight] = useState('');
 
   useEffect(() => {
     const storedLogs = JSON.parse(localStorage.getItem('logs'));
@@ -19,16 +20,17 @@ const Tracker = () => {
   }, [logs]);
 
   const addLog = () => {
-    if (!description || !date) {
-      alert('Please fill in both the description and date.');
+    if (!description || !date || !weight) {
+      alert('Please fill in all fields.');
       return;
     }
 
-    const newLog = { type, description, date };
+    const newLog = { type, description, date, weight };
     setLogs([...logs, newLog]);
     setType('Workout');
     setDescription('');
     setDate('');
+    setWeight('');
   };
 
   const deleteLog = (index) => {
@@ -39,11 +41,13 @@ const Tracker = () => {
   const analyzeLogs = () => {
     const workoutCount = logs.filter(log => log.type === 'Workout').length;
     const mealCount = logs.filter(log => log.type === 'Meal').length;
+    const averageWeight = logs.length ? (logs.reduce((total, log) => total + parseFloat(log.weight), 0) / logs.length).toFixed(2) : 0;
 
     return (
       <div className="analysis">
         <p>Total Workouts: {workoutCount}</p>
         <p>Total Meals: {mealCount}</p>
+        <p>Average Weight: {averageWeight} kg</p>
       </div>
     );
   };
@@ -79,11 +83,21 @@ const Tracker = () => {
             onChange={e => setDate(e.target.value)}
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="weight">Weight (kg):</label>
+          <input
+            type="number"
+            id="weight"
+            name="weight"
+            value={weight}
+            onChange={e => setWeight(e.target.value)}
+          />
+        </div>
         <button
           type="button"
           onClick={addLog}
           className="tracker-button"
-          disabled={!description || !date}
+          disabled={!description || !date || !weight}
         >
           Add Log
         </button>
@@ -96,6 +110,7 @@ const Tracker = () => {
             <p><strong>Type:</strong> {log.type}</p>
             <p><strong>Description:</strong> {log.description}</p>
             <p><strong>Date:</strong> {log.date}</p>
+            <p><strong>Weight:</strong> {log.weight} kg</p>
             <button onClick={() => deleteLog(index)} className="delete-button">Delete</button>
           </div>
         ))}

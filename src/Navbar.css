@@ -1,5 +1,3 @@
-/* Navbar.css */
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -22,7 +20,7 @@
 .navbar-menu {
   list-style: none;
   display: flex;
-  gap: 25px; /* Slightly increased gap */
+  gap: 50px; /* Increased gap */
   margin: 0;
   padding: 0;
 }

@@ -66,6 +66,7 @@ const Reviews = () => {
     <div className="reviews-container">
       <h1>Reviews</h1>
       <p>Check out our latest reviews</p>
+      <p>Your feedback shapes out future</p>
       <div id="reviews-list">
         {reviews.map(review => (
           <div key={review.id} className="review-item">

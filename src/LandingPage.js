@@ -79,8 +79,20 @@ const LandingPage = ({ scrollToContact }) => {
             <p>We are open 24 hours a day, 7 days a week.</p>
           </div>
           <div className="faq-item">
+            <h3>How can I save my workout and meal logs?</h3>
+            <p>All data is stored locally, so when you close and re-open the website, your data will remain saved.</p>
+          </div>
+          <div className="faq-item">
+            <h3>How can I save my workout and meal logs?</h3>
+            <p>All data is stored locally, so when you close and re-open the website, your data will remain saved.</p>
+          </div>
+          <div className="faq-item">
+            <h3>Are your personal trainers certified?</h3>
+            <p>Yes, all our personal trainers are certified and have extensive experience in their respective fields.</p>
+          </div>
+          <div className="faq-item">
             <h3>How can I contact you?</h3>
-            <p>You can contact us via phone at (613) 562-5700 or through our online contact form.</p>
+            <p>You can contact us via phone at (613) 562-5700 or through our online reviews form.</p>
           </div>
         </div>
       </section>

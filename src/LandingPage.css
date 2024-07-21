@@ -5,6 +5,24 @@
   padding: 20px;
 }
 
+.language-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #ff7f50; /* Same as the button color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.language-toggle:hover {
+  background-color: #ff6347;
+}
+
 .hero-section {
   text-align: center;
   padding: 100px 20px; /* Increase padding for a more spacious feel */

@@ -14,6 +14,11 @@ const About = () => <h1>About Page</h1>;
 
 function App() {
   const [scrollToContact, setScrollToContact] = useState(false);
+  const [language, setLanguage] = useState('en');
+
+  const toggleLanguage = () => {
+    setLanguage((prevLang) => (prevLang === 'en' ? 'fr' : 'en'));
+  };
 
   useEffect(() => {
     if (scrollToContact) {
@@ -24,9 +29,9 @@ function App() {
 
   return (
     <Router basename="/seg3125-p2-f">
-      <Navbar setScrollToContact={setScrollToContact} />
+      <Navbar setScrollToContact={setScrollToContact} toggleLanguage={toggleLanguage} language={language} />
       <Routes>
-        <Route path="/" element={<LandingPage scrollToContact={scrollToContact} />} />
+        <Route path="/" element={<LandingPage scrollToContact={scrollToContact} language={language} />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/planworkout" element={<Planworkout />} />
         <Route path="/services/plannutrition" element={<Plannutrition />} />

@@ -1,3 +1,4 @@
+// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -10,7 +11,9 @@ import Confirm from './Confirm';
 import Tracker from './Tracker';
 import './App.css';
 
-const About = () => <h1>About Page</h1>;
+const About = ({ language }) => (
+  <h1>{language === 'en' ? 'About Page' : 'À propos de nous'}</h1>
+);
 
 function App() {
   const [scrollToContact, setScrollToContact] = useState(false);
@@ -32,13 +35,13 @@ function App() {
       <Navbar setScrollToContact={setScrollToContact} toggleLanguage={toggleLanguage} language={language} />
       <Routes>
         <Route path="/" element={<LandingPage scrollToContact={scrollToContact} language={language} />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/services/planworkout" element={<Planworkout />} />
-        <Route path="/services/plannutrition" element={<Plannutrition />} />
-        <Route path="/services/tracker" element={<Tracker />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/confirm" element={<Confirm />} />
+        <Route path="/services" element={<Services language={language} />} />
+        <Route path="/services/planworkout" element={<Planworkout language={language} />} />
+        <Route path="/services/plannutrition" element={<Plannutrition language={language} />} />
+        <Route path="/services/tracker" element={<Tracker language={language} />} />
+        <Route path="/about" element={<About language={language} />} />
+        <Route path="/reviews" element={<Reviews language={language} />} />
+        <Route path="/confirm" element={<Confirm language={language} />} />
       </Routes>
     </Router>
   );

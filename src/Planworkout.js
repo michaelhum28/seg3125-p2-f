@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Planworkout.css';
 
-const Planworkout = () => {
+const Planworkout = ({ language }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -39,12 +39,61 @@ const Planworkout = () => {
         navigate('/confirm');
     };
 
+    const text = {
+        en: {
+            title: 'Personal Goals and Life Circumstances Form',
+            name: 'Name:',
+            email: 'Email:',
+            workoutPlan: 'Workout Plan:',
+            intensityLevel: 'Intensity Level:',
+            duration: 'Duration:',
+            additionalInfo: 'Additional information:',
+            submit: 'Continue to payment →',
+            selectPlan: 'Select Workout Plan',
+            selectIntensity: 'Select Intensity Level',
+            selectDuration: 'Select Duration',
+            cardio: 'Cardio',
+            strength: 'Strength Training',
+            yoga: 'Yoga',
+            low: 'Low',
+            medium: 'Medium',
+            high: 'High',
+            lessThan30: '< 30 minutes',
+            between30and60: '30 - 60 minutes',
+            moreThan60: '> 60 minutes',
+        },
+        fr: {
+            title: 'Formulaire d\'objectifs personnels et de circonstances de vie',
+            name: 'Nom:',
+            email: 'Email:',
+            workoutPlan: 'Plan d\'entraînement:',
+            intensityLevel: 'Niveau d\'intensité:',
+            duration: 'Durée:',
+            additionalInfo: 'Informations supplémentaires:',
+            submit: 'Continuer vers le paiement →',
+            selectPlan: 'Sélectionnez le plan d\'entraînement',
+            selectIntensity: 'Sélectionnez le niveau d\'intensité',
+            selectDuration: 'Sélectionnez la durée',
+            cardio: 'Cardio',
+            strength: 'Entraînement de force',
+            yoga: 'Yoga',
+            low: 'Bas',
+            medium: 'Moyen',
+            high: 'Élevé',
+            lessThan30: '< 30 minutes',
+            between30and60: '30 - 60 minutes',
+            moreThan60: '> 60 minutes',
+        },
+    };
+
+    const t = text[language];
+
     return (
         <div className="plan-container">
-            <h2>Personal Goals and Life Circumstances Form</h2>
+            <h2>{t.title}</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="name">{t.name}</label>
                     <input
                         type="text"
                         id="name"
@@ -55,7 +104,7 @@ const Planworkout = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email">Email:</label>
+                    <label htmlFor="email">{t.email}</label>
                     <input
                         type="email"
                         id="email"
@@ -66,7 +115,7 @@ const Planworkout = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="workoutPlan">Workout Plan:</label>
+                    <label htmlFor="workoutPlan">{t.workoutPlan}</label>
                     <select
                         id="workoutPlan"
                         name="workoutPlan"
@@ -74,14 +123,14 @@ const Planworkout = () => {
                         onChange={handleChange}
                         required
                     >
-                        <option value="">Select Workout Plan</option>
-                        <option value="Cardio">Cardio</option>
-                        <option value="Strength Training">Strength Training</option>
-                        <option value="Yoga">Yoga</option>
+                        <option value="">{t.selectPlan}</option>
+                        <option value="Cardio">{t.cardio}</option>
+                        <option value="Strength Training">{t.strength}</option>
+                        <option value="Yoga">{t.yoga}</option>
                     </select>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="intensityLevel">Intensity Level:</label>
+                    <label htmlFor="intensityLevel">{t.intensityLevel}</label>
                     <select
                         id="intensityLevel"
                         name="intensityLevel"
@@ -89,14 +138,14 @@ const Planworkout = () => {
                         onChange={handleChange}
                         required
                     >
-                        <option value="">Select Intensity Level</option>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
+                        <option value="">{t.selectIntensity}</option>
+                        <option value="Low">{t.low}</option>
+                        <option value="Medium">{t.medium}</option>
+                        <option value="High">{t.high}</option>
                     </select>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="duration">Duration:</label>
+                    <label htmlFor="duration">{t.duration}</label>
                     <select
                         id="duration"
                         name="duration"
@@ -104,14 +153,14 @@ const Planworkout = () => {
                         onChange={handleChange}
                         required
                     >
-                        <option value="">Select Duration</option>
-                        <option value="<30 mins">&lt; 30 minutes</option>
-                        <option value="30-60 mins">30 - 60 minutes</option>
-                        <option value=">60 mins">&gt; 60 minutes</option>
+                        <option value="">{t.selectDuration}</option>
+                        <option value="<30 mins">{t.lessThan30}</option>
+                        <option value="30-60 mins">{t.between30and60}</option>
+                        <option value=">60 mins">{t.moreThan60}</option>
                     </select>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="lifeCircumstances">Additional information:</label>
+                    <label htmlFor="lifeCircumstances">{t.additionalInfo}</label>
                     <textarea
                         id="lifeCircumstances"
                         name="lifeCircumstances"
@@ -120,7 +169,7 @@ const Planworkout = () => {
                         required
                     />
                 </div>
-                <button type="submit">Continue to payment →</button>
+                <button type="submit">{t.submit}</button>
             </form>
         </div>
     );

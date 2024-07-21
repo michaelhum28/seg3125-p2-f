@@ -1,7 +1,11 @@
+//change the already made reviews??
+//no bc then would have to change the new reviews to french/english as wel on change
+
+// Reviews.js
 import React, { useState } from 'react';
 import './Reviews.css';
 
-const Reviews = () => {
+const Reviews = ({ language }) => {
   const initialReviews = [
     {
       id: 1,
@@ -9,7 +13,7 @@ const Reviews = () => {
       plan: 'Workout',
       rating: 5,
       email: 'john@example.com',
-      review: 'This plan is amazing! Highly recommend it to everyone.',
+      review: 'Great plan. would reccomend.',
       isNew: false,
     },
     {
@@ -18,13 +22,13 @@ const Reviews = () => {
       plan: 'Nutrition',
       rating: 4,
       email: 'jane@example.com',
-      review: 'Good value for the price. Satisfied with the service.',
+      review: 'Very good service.',
       isNew: false,
     },
   ];
 
   const [reviews, setReviews] = useState(initialReviews);
-  const [name, setName] = useState('Anonymous');
+  const [name, setName] = useState('Anonyme');
   const [plan, setPlan] = useState('Workout');
   const [rating, setRating] = useState('');
   const [email, setEmail] = useState('');
@@ -33,7 +37,7 @@ const Reviews = () => {
 
   const addReview = () => {
     if (!rating || !review || !email) {
-      setError('Please fill in all required fields');
+      setError('Veuillez remplir tous les champs requis');
       return;
     }
 
@@ -50,7 +54,7 @@ const Reviews = () => {
     setReviews([newReview, ...reviews]);
 
     // Clear the form fields
-    setName('Anonymous');
+    setName('Anonyme');
     setPlan('Workout');
     setRating('');
     setEmail('');
@@ -62,57 +66,94 @@ const Reviews = () => {
     setReviews(reviews.filter(review => review.id !== id || !review.isNew));
   };
 
+  const text = {
+    en: {
+      title: 'Reviews',
+      subtitle: 'Check out our latest reviews',
+      feedback: 'Your feedback shapes our future',
+      leaveReview: 'Leave us a review!',
+      error: 'Please fill in all required fields',
+      name: 'Name:',
+      plan: 'Plan:',
+      rating: 'Rating:',
+      email: 'Email:',
+      review: 'Review:',
+      submit: 'Submit',
+      workout: 'Workout',
+      nutrition: 'Nutrition',
+      delete: 'Delete',
+    },
+    fr: {
+      title: 'Avis',
+      subtitle: 'Découvrez nos derniers avis',
+      feedback: 'Vos commentaires façonnent notre avenir',
+      leaveReview: 'Laissez-nous un avis!',
+      error: 'Veuillez remplir tous les champs requis',
+      name: 'Nom:',
+      plan: 'Plan:',
+      rating: 'Note:',
+      email: 'Email:',
+      review: 'Avis:',
+      submit: 'Soumettre',
+      workout: 'Entraînement',
+      nutrition: 'Nutrition',
+      delete: 'Supprimer',
+    }
+  };
+
+  const t = text[language];
+
   return (
     <div className="reviews-container">
-      <h1>Reviews</h1>
-      <p>Check out our latest reviews</p>
-      <p>Your feedback shapes out future</p>
+      <h1>{t.title}</h1>
+      <p>{t.subtitle}</p>
+      <p>{t.feedback}</p>
       <div id="reviews-list">
         {reviews.map(review => (
           <div key={review.id} className="review-item">
             <div className="review-details">
-              <p><strong>Name: </strong>{review.name}</p>
-              <p><strong>Plan: </strong>{review.plan}</p>
-              <p><strong>Rating: </strong>{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</p>
+              <p><strong>{t.name} </strong>{review.name}</p>
+              <p><strong>{t.plan} </strong>{review.plan}</p>
+              <p><strong>{t.rating} </strong>{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</p>
             </div>
             <div className="review-text">
               <p>{review.review}</p>
             </div>
             {review.isNew && (
-              <button className="delete-button" onClick={() => deleteNewReview(review.id)}>Delete</button>
+              <button className="delete-button" onClick={() => deleteNewReview(review.id)}>{t.delete}</button>
             )}
           </div>
         ))}
       </div>
 
       <div className="review-form-container">
-        <h2>Leave us a review!</h2>
-        {error && <p className="error">{error}</p>}
+        <h2>{t.leaveReview}</h2>
+        {error && <p className="error">{t.error}</p>}
         <form id="review-form">
           <div className="form-group">
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">{t.name}</label>
             <input type="text" id="name" name="name" value={name} onChange={e => setName(e.target.value)} />
           </div>
           <div className="form-group">
-            <label htmlFor="plan">Plan:</label>
+            <label htmlFor="plan">{t.plan}</label>
             <select id="plan" name="plan" value={plan} onChange={e => setPlan(e.target.value)}>
-              <option value="Workout">Workout</option>
-              <option value="Nutrition">Nutrition</option>
+              <option value="Workout">{t.workout}</option>
+              <option value="Nutrition">{t.nutrition}</option>
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="rating">Rating:</label>
+            <label htmlFor="rating">{t.rating}</label>
             <input type="number" id="rating" name="rating" min="1" max="5" value={rating} onChange={e => setRating(e.target.value)} />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">{t.email}</label>
             <input type="email" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} />
           </div>
           <div className="form-group">
-            <label htmlFor="review">Review:</label>
+            <label htmlFor="review">{t.review}</label>
             <textarea id="review" name="review" value={review} onChange={e => setReview(e.target.value)}></textarea>
           </div>
-          <button type="button" onClick={addReview}>Submit</button>
+          <button type="button" onClick={addReview}>{t.submit}</button>
         </form>
       </div>
     </div>

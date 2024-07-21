@@ -1,12 +1,50 @@
+// Tracker.js
 import React, { useState, useEffect } from 'react';
 import './Tracker.css';
 
-const Tracker = () => {
+const Tracker = ({ language }) => {
   const [logs, setLogs] = useState([]);
   const [type, setType] = useState('Workout');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [weight, setWeight] = useState('');
+
+  const text = {
+    en: {
+      title: 'Track Your Progress',
+      type: 'Type:',
+      workout: 'Workout',
+      meal: 'Meal',
+      description: 'Description:',
+      date: 'Date:',
+      weight: 'Weight (kg):',
+      addLog: 'Add Log',
+      yourLogs: 'Your Logs',
+      analysis: 'Analysis',
+      totalWorkouts: 'Total Workouts:',
+      totalMeals: 'Total Meals:',
+      averageWeight: 'Average Weight:',
+      delete: 'Delete',
+      alert: 'Please fill in all fields.',
+    },
+    fr: {
+      title: 'Suivez vos progrès',
+      type: 'Type:',
+      workout: 'Entraînement',
+      meal: 'Repas',
+      description: 'Description:',
+      date: 'Date:',
+      weight: 'Poids (kg):',
+      addLog: 'Ajouter une entrée',
+      yourLogs: 'Vos entrées',
+      analysis: 'Analyse',
+      totalWorkouts: 'Total des entraînements:',
+      totalMeals: 'Total des repas:',
+      averageWeight: 'Poids moyen:',
+      delete: 'Supprimer',
+      alert: 'Veuillez remplir tous les champs.',
+    }
+  };
 
   useEffect(() => {
     const storedLogs = JSON.parse(localStorage.getItem('logs'));
@@ -21,7 +59,7 @@ const Tracker = () => {
 
   const addLog = () => {
     if (!description || !date || !weight) {
-      alert('Please fill in all fields.');
+      alert(text[language].alert);
       return;
     }
 
@@ -45,26 +83,26 @@ const Tracker = () => {
 
     return (
       <div className="analysis">
-        <p>Total Workouts: {workoutCount}</p>
-        <p>Total Meals: {mealCount}</p>
-        <p>Average Weight: {averageWeight} kg</p>
+        <p>{text[language].totalWorkouts} {workoutCount}</p>
+        <p>{text[language].totalMeals} {mealCount}</p>
+        <p>{text[language].averageWeight} {averageWeight} kg</p>
       </div>
     );
   };
 
   return (
     <div className="tracker-container">
-      <h1 id="track-title">Track Your Progress</h1>
+      <h1 id="track-title">{text[language].title}</h1>
       <form id="tracker-form">
         <div className="form-group">
-          <label htmlFor="type">Type:</label>
+          <label htmlFor="type">{text[language].type}</label>
           <select id="type" name="type" value={type} onChange={e => setType(e.target.value)}>
-            <option value="Workout">Workout</option>
-            <option value="Meal">Meal</option>
+            <option value="Workout">{text[language].workout}</option>
+            <option value="Meal">{text[language].meal}</option>
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="description">{text[language].description}</label>
           <input
             type="text"
             id="description"
@@ -74,7 +112,7 @@ const Tracker = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="date">Date:</label>
+          <label htmlFor="date">{text[language].date}</label>
           <input
             type="date"
             id="date"
@@ -84,7 +122,7 @@ const Tracker = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="weight">Weight (kg):</label>
+          <label htmlFor="weight">{text[language].weight}</label>
           <input
             type="number"
             id="weight"
@@ -99,25 +137,25 @@ const Tracker = () => {
           className="tracker-button"
           disabled={!description || !date || !weight}
         >
-          Add Log
+          {text[language].addLog}
         </button>
       </form>
 
       <div className="logs">
-        <h2>Your Logs</h2>
+        <h2>{text[language].yourLogs}</h2>
         {logs.map((log, index) => (
           <div key={index} className="log-item">
-            <p><strong>Type:</strong> {log.type}</p>
-            <p><strong>Description:</strong> {log.description}</p>
-            <p><strong>Date:</strong> {log.date}</p>
-            <p><strong>Weight:</strong> {log.weight} kg</p>
-            <button onClick={() => deleteLog(index)} className="delete-button">Delete</button>
+            <p><strong>{text[language].type}</strong> {log.type}</p>
+            <p><strong>{text[language].description}</strong> {log.description}</p>
+            <p><strong>{text[language].date}</strong> {log.date}</p>
+            <p><strong>{text[language].weight}</strong> {log.weight} kg</p>
+            <button onClick={() => deleteLog(index)} className="delete-button">{text[language].delete}</button>
           </div>
         ))}
       </div>
 
       <div className="analysis-section">
-        <h2>Analysis</h2>
+        <h2>{text[language].analysis}</h2>
         {analyzeLogs()}
       </div>
     </div>

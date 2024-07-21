@@ -28,7 +28,7 @@ const Reviews = ({ language }) => {
   ];
 
   const [reviews, setReviews] = useState(initialReviews);
-  const [name, setName] = useState('Anonyme');
+  const [name, setName] = useState('Anonymous');
   const [plan, setPlan] = useState('Workout');
   const [rating, setRating] = useState('');
   const [email, setEmail] = useState('');
@@ -54,9 +54,9 @@ const Reviews = ({ language }) => {
     setReviews([newReview, ...reviews]);
 
     // Clear the form fields
-    setName('Anonyme');
+    setName('Anonymous');
     setPlan('Workout');
-    setRating('');
+    setRating('');  
     setEmail('');
     setReview('');
     setError('');

@@ -1,3 +1,4 @@
+// LandingPage.js
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './LandingPage.css';
@@ -28,6 +29,18 @@ const translations = {
     openHours: 'Open 24 hours',
     onlineTraining: 'Personal & group online training',
     phoneNumber: 'Phone Number: (613) 562-5700',
+    expert1: {
+      description: 'Certified personal trainer with over 10 years of experience in strength training and nutrition.',
+      specialization: 'Specialization: Strength Training',
+    },
+    expert2: {
+      description: 'Cardio and endurance coach with a focus on marathon training and cardiovascular health.',
+      specialization: 'Specialization: Cardio',
+    },
+    expert3: {
+      description: 'Yoga and pilates instructor, specializing in flexibility and mindfulness techniques.',
+      specialization: 'Specialization: Yoga',
+    },
   },
   fr: {
     heroTitle: 'Votre parcours fitness commence ici',
@@ -49,6 +62,18 @@ const translations = {
     openHours: 'Ouvert 24 heures sur 24',
     onlineTraining: 'Entraînement en ligne personnel et collectif',
     phoneNumber: 'Numéro de téléphone : (613) 562-5700',
+    expert1: {
+      description: 'Entraîneur personnel certifié avec plus de 10 ans d\'expérience en entraînement de force et en nutrition.',
+      specialization: 'Spécialisation : Entraînement de force',
+    },
+    expert2: {
+      description: 'Entraîneur de cardio et d\'endurance axé sur l\'entraînement au marathon et la santé cardiovasculaire.',
+      specialization: 'Spécialisation : Cardio',
+    },
+    expert3: {
+      description: 'Instructeur de yoga et de pilates, spécialisé dans les techniques de flexibilité et de pleine conscience.',
+      specialization: 'Spécialisation : Yoga',
+    },
   },
 };
 
@@ -81,10 +106,8 @@ const LandingPage = ({ scrollToContact, language }) => {
               style={{ backgroundImage: `url(${coach1})` }}
             ></div>
             <div className="expert-name">John Doe</div>
-            <div className="expert-description">
-              Certified personal trainer with over 10 years of experience in strength training and nutrition.
-            </div>
-            <div className="expert-specialization">Specialization: Strength Training</div>
+            <div className="expert-description">{t.expert1.description}</div>
+            <div className="expert-specialization">{t.expert1.specialization}</div>
           </div>
           <div className="expert-card">
             <div
@@ -92,10 +115,8 @@ const LandingPage = ({ scrollToContact, language }) => {
               style={{ backgroundImage: `url(${coach2})` }}
             ></div>
             <div className="expert-name">Michael Johnson</div>
-            <div className="expert-description">
-              Cardio and endurance coach with a focus on marathon training and cardiovascular health.
-            </div>
-            <div className="expert-specialization">Specialization: Cardio</div>
+            <div className="expert-description">{t.expert2.description}</div>
+            <div className="expert-specialization">{t.expert2.specialization}</div>
           </div>
           <div className="expert-card">
             <div
@@ -103,10 +124,8 @@ const LandingPage = ({ scrollToContact, language }) => {
               style={{ backgroundImage: `url(${coach3})` }}
             ></div>
             <div className="expert-name">Jane Smith</div>
-            <div className="expert-description">
-              Yoga and pilates instructor, specializing in flexibility and mindfulness techniques.
-            </div>
-            <div className="expert-specialization">Specialization: Yoga</div>
+            <div className="expert-description">{t.expert3.description}</div>
+            <div className="expert-specialization">{t.expert3.specialization}</div>
           </div>
         </div>
       </section>
